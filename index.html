@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Groundswell</title>
+	<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+	<script src="https://api.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.js"></script>
+	<link href="https://api.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.css" rel="stylesheet" />
+	<script src='https://npmcdn.com/csv2geojson@latest/csv2geojson.js'></script>
+	<script src="https://cdn.jsdelivr.net/npm/@turf/turf@5/turf.min.js"></script>
+	<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.2.0/mapbox-gl-geocoder.min.js'></script>
+
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="geocoder.css">
+	<link rel="stylesheet" href="lists.css">
+</head>
+<body>
+	<div id="map"></div>
+	<div id="main">
+		<div id="top">
+			<img id="logo" src="images/logo-blue.png"/>
+			<div id="geocoder"></div>
+			<div id="filters">
+				<div id="filters-left">
+					<div id="selected-filters"></div>
+					<div id="all-filters">
+						<div id="areas-filters"></div>
+						<p>Needing help in</p>
+						<div id="help-filters"></div>
+						<p>With keyword</p>
+						<div id="keyword-search-bar">
+							<input id="keyword-search" type="text" placeholder="E.g. Afro-Caribbean"/>
+							<button id="search-button">></button>
+							<button id="cancel-button" style="display:none;">x</button>
+						</div>
+						<div id="searching">Searching...</div>
+					</div>
+				</div>
+				<div id="more-button">More</div>
+			</div>
+		</div>
+		<div id="bottom">
+			<div id="controls">
+				<div id="toggles">
+					<div id="orgs-button" class="toggle-selected">Organisations</div>
+					<div id="events-button" class="toggle-unselected">Events</div>
+				</div>
+				<div id="back-button"><</div>
+				<div id="add-button">Add</div>
+			</div>
+			<div id="lists">
+				<div id="orgs-list"></div>
+				<div id="events-list"></div>
+				<div id="selected">
+					<div id="selected-pic"></div>
+					<div id="selected-bottom">
+						<div id="selected-top">
+							<div id="left">
+								<div id="selected-title"></div>
+								<div id="when"></div>
+								<div id="socials">
+									<div class="social" id="website">
+										<div class="socials-icon website"></div>
+										<a></a>
+									</div>
+									<div class="social" id="eventbrite">
+										<div class="socials-icon eventbrite"></div>
+										<a></a>
+									</div>
+									<div class="social" id="facebook">
+										<div class="socials-icon facebook"></div>
+										<a></a>
+									</div>
+									<div class="social" id="instagram">
+										<div class="socials-icon instagram"></div>
+										<a></a>
+									</div>
+									<div class="social" id="twitter">
+										<div class="socials-icon twitter"></div>
+										<a></a>
+									</div>
+								</div>
+							</div>
+							<div id="right">
+								<div id="selected-specialisations"></div>
+								<div id="selected-help">
+									<div class="help-needed-label">Help needed</div>
+									<div id="selected-help-categories"></div>
+								</div>
+							</div>
+						</div>
+						<div id="selected-description">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="dialogue-container">
+		<div id="dialogue">
+			<img id="close-button-mobile" src="images/close.png"/>
+			<div id="dialogue-content">
+				<div><span>&rarr; &nbsp;&nbsp;</span><a href="add-update/org.html">Add or update an organisation</a></div>
+				<div><span>&rarr; &nbsp;&nbsp;</span><a href="add-update/event.html">Add or update an event</a></div>
+			</div>
+			<img id="close-button" src="images/close.png"/>
+		</div>
+	</div>
+
+</body>
+<footer>
+	<script src="data.js"></script>
+	<script src="map.js"></script>
+	<script src="lists.js"></script>
+	<script src="filters.js"></script>
+	<script src="controls.js"></script>
+</footer>
+</html>

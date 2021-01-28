@@ -1,0 +1,223 @@
+:root {
+  --grey: #a8a8a8;
+  --shade: #92d2d6;
+  --sharp: #00adc1;
+  --darker: #324b4d;
+  --background: rgba(248, 245, 241, 0.6);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  background-color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  box-sizing: border-box;
+}
+
+#main {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin-bottom: 40vh;
+}
+
+#response {
+  color: var(--sharp);
+  font-size: 1.3em;
+  font-weight: 400;
+  margin-top: 3rem;
+  text-align: center;
+}
+
+form {
+  width: 100%;
+  margin-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+.entry {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.entry > * {
+  width: 49%;
+}
+
+.question {
+  padding-right: 4rem;
+  box-sizing: border-box;
+}
+
+fieldset {
+  border: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+textarea {
+  width: 100%;
+}
+
+input, textarea {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 1em;
+  color: var(--sharp);
+}
+
+input {
+  height: 1.6em;
+  box-sizing: border-box;
+  padding: 0 0.3em;
+}
+
+.multiple {
+
+}
+
+.multiple input {
+  width: 60%;
+}
+
+.multiple input[type="checkbox"] {
+  width: auto;
+}
+
+select {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 1em;
+  width: 60%;
+}
+
+.pair {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 0.2em;
+  align-items: center;
+}
+
+p#top {
+  margin-bottom: 0.2em;
+  text-align: center;
+}
+
+.filter {
+  text-transform: uppercase;
+}
+
+.field {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.left-field {
+  justify-content: flex-start;
+  padding-top: 1rem;
+}
+
+.field label, .left-field label {
+  margin: 0 1rem 0 0.3rem;
+}
+
+p.tip {
+  font-size: 0.9em;
+  color: grey;
+  /* font-style: italic; */
+  margin-top: 1rem;
+}
+
+
+h1 {
+  margin-bottom: 1.5rem;
+  color: var(--sharp);
+  font-size: 1.8em;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-align: center;
+}
+
+h3 {
+  font-size: 1em;
+  font-weight: 500;
+  margin-bottom: 0.4em;
+}
+
+.bold {
+  font-weight: 400;
+}
+
+li {
+  list-style-position: inside;
+  margin-bottom: 0.2em;
+}
+
+button {
+  margin-top: 2rem;
+  padding: 0.5em 0.7em;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.3em;
+  align-self: center;
+  background-color: var(--sharp);
+  color: white;
+  border-radius: 8px;
+  font-weight: 300;
+  border: none;
+  cursor: pointer;
+}
+
+
+@media only screen and (max-width: 740px) {
+
+  #main {
+    max-width: 500px;
+  }
+
+  .entry > * {
+    width: 100%;
+  }
+
+  h1, p#top {
+    text-align: left;
+  }
+
+  h3 {
+    margin-bottom: 0.2em;
+  }
+
+  .question {
+    margin-bottom: 1.5em;
+  }
+
+  button {
+    align-self: flex-start;
+  }
+
+  #response {
+    text-align: left;
+  }
+
+}

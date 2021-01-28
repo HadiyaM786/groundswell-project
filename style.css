@@ -1,0 +1,499 @@
+:root {
+  --grey: #a8a8a8;
+  --shade: #92d2d6;
+  --sharp: #00adc1;
+  --darker: #324b4d;
+  --green: #e9f2c8;
+  --background: rgba(248, 245, 241, 0.6);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  overflow: hidden;
+}
+
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#main > * {
+  z-index: 1;
+}
+
+#dialogue-container {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Level 1 */
+
+#dialogue {
+  display: none;
+  position: absolute;
+  padding: 1.8rem 2.2rem 0.9rem 2.2rem;
+  /* border: 1px solid var(--darker); */
+  z-index: 2;
+  background-color: var(--green);
+  border-radius: 8px;
+  flex-direction: row;
+  justify-content: space-around;
+  font-weight: 300;
+}
+
+#close-button {
+  align-self: flex-start;
+  height: 1.2rem;
+  width: 1.2rem;
+  cursor: pointer;
+  margin-left: 1.3rem;
+}
+
+#close-button-mobile {
+  display: none;
+}
+
+#dialogue-content {
+  margin: 2.2rem 0;
+  text-align: left;
+  height: 4.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#dialogue-content > * {
+  padding-bottom: 0.3rem;
+  display: block;
+  color: var(--sharp);
+  font-size: 1.3rem;
+}
+
+#dialogue-content a {
+  font-family: 'Roboto', sans-serif;
+  color: var(--sharp);
+  text-decoration: none;
+}
+
+#dialogue-content a:hover {
+  text-decoration: underline;
+}
+
+
+#top {
+  background-color: var(--background);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0.5rem 0 0.5rem 0;
+  align-items: center;
+  margin-bottom: 1.5em;
+  border-radius: 0 0 8px 8px;
+}
+
+#bottom {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  border-radius: 8px 8px 0 0;
+  background-color: var(--background);
+}
+
+/* Level 2 */
+
+#geocoder {
+  width: 95%;
+  padding-bottom: 0.5rem;
+}
+
+#filters {
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  overflow-y: auto;
+  padding-bottom: 0.3em;
+}
+
+#controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 95%;
+  height: 2rem !important;
+  font-weight: 300;
+}
+
+#lists {
+  margin-top: 0.5rem;
+  width: 95%;
+}
+
+/* Filters */
+
+#filters-left {
+  padding-left: 0.3rem;
+}
+
+#filters-left p {
+  font-size: 1em;
+  color: black;
+  margin: 1em 0.2em 0.5em 0.2em;
+}
+
+#all-filters {
+  /* height: 100%; */
+  display: none;
+}
+
+#areas-filters, #help-filters, #selected-filters {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: space-around;
+}
+
+#more-button {
+  font-size: 1rem;
+  text-align: right;
+  padding: 0 0.4em;
+  cursor: pointer;
+  height: 2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.area-filter, .help-filter, #keyword-filter {
+  border: 0.5px solid var(--grey);
+  border-radius: 8px;
+  text-transform: uppercase;
+  font-weight: 300;
+  font-size: 0.9em;
+  cursor: pointer;
+  padding: 0.2em 0.3em;
+  margin: 0.2em;
+}
+
+#keyword-filter {
+  background-color: white;
+  color: black;
+  text-transform: none;
+}
+
+.work-filter-selected {
+  background-color: var(--shade);
+}
+
+.help-filter-selected {
+  background-color: var(--grey);
+}
+
+/* Keyword Search */
+
+#keyword-search-bar {
+  height: 2.2em;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#keyword-search {
+  border: none;
+  font-size: 1em;
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  box-sizing: border-box;
+  width: 79%;
+}
+
+#search-button, #cancel-button {
+  background-color: var(--shade);
+  border: 1px solid grey;
+  border-radius: 8px;
+  height: 100%;
+  box-sizing: border-box;
+  width: 2.9em;
+}
+
+#searching {
+  font-style: italic;
+  font-weight: 300;
+  display: none;
+}
+
+
+/* Controls */
+
+#toggles {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  height: 100%;
+}
+
+#toggles > * {
+  cursor: pointer;
+  width: 49%;
+  border: 1px solid grey;
+  background-color: var(--sharp);
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  /* font-size: 0.9em; */
+  /* font-weight: 400; */
+  /* padding: 0.2em 0.3em; */
+}
+
+#orgs-button {
+  border-radius: 8px 0 0 8px;
+}
+
+#events-button {
+  border-radius: 0 8px 8px 0;
+}
+
+.toggle-unselected {
+  opacity: 0.5;
+  color: black;
+}
+
+.toggle-selected {
+  opacity: 1;
+  color: white;
+}
+
+#add-button, #back-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  height: 100%;
+}
+
+#add-button {
+  padding: 0 0.8em;
+}
+
+#back-button {
+  padding: 0 0.9em;
+  display: none;
+  border-radius: 8px;
+  border: 1px solid grey;
+  background-color: var(--sharp);
+  color: white;
+}
+
+#add-button, #more-button {
+  font-weight: 400;
+  color: var(--darker);
+  border: var(--darker) 1px solid;
+  box-sizing: border-box;
+  /* background-color: var(--green); */
+  border-radius: 8px;
+}
+
+/* Markers */
+
+.orgs-marker {
+  display: block;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 22px;
+  height: 37px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url("https://map.groundswellproject.org/images/marker.png");
+  z-index: 0;
+}
+
+.events-marker {
+  display: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 50px; /* 1.59 */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url("https://map.groundswellproject.org/images/marker.png");
+  z-index: 0;
+}
+
+.selected-marker {
+  padding: 0;
+  width: 24px;
+  height: 50px; /* 1.59 */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url("https://map.groundswellproject.org/images/marker-sharp.png");
+  z-index: 1;
+}
+
+.location-marker {
+  padding: 0;
+  width: 24px;
+  height: 50px; /* 1.59 */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url("https://map.groundswellproject.org/images/marker-grey.png");
+  z-index: 0;
+}
+
+.mapboxgl-popup {
+  max-width: 200px;
+}
+
+.mapboxgl-popup-content {
+  text-align: center;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.mapboxgl-ctrl-attrib.mapboxgl-compact-show .mapboxgl-ctrl-attrib-inner {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.mine {
+  text-align: right;
+}
+
+
+
+@media only screen and (max-width: 740px) {
+
+  #logo {
+    display: none;
+  }
+
+  #main {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #lists {
+    height: 45vh;
+  }
+
+  .mapboxgl-ctrl-attrib.mapboxgl-compact-show .mapboxgl-ctrl-attrib-inner > * {
+    padding: 0 0.2em;
+  }
+
+
+  #dialogue {
+    padding: 2.2rem;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 80%;
+    height: 20rem;
+    box-sizing: border-box;
+  }
+
+  #close-button-mobile {
+    align-self: flex-end;
+    height: 1.2rem;
+    width: 1.2rem;
+    cursor: pointer;
+    margin-left: 0;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  #close-button {
+    display: none;
+  }
+
+  #dialogue-content {
+    margin: 0;
+    padding-top: 2rem;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  #dialogue-content > * {
+    padding-bottom: 2rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  #dialogue-content a {
+    width: 89%;
+    /* margin-left: 2rem; */
+  }
+
+
+}
+
+@media only screen and (min-width: 740px) {
+
+  body {
+    font-size: 15px;
+  }
+
+  .mapboxgl-ctrl-geocoder--input {
+    font-size: 15px !important;
+  }
+
+  #main {
+    width: 370px;
+    height: 100vh;
+    min-height: 450px;
+    margin-left: 1.5vw;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #bottom {
+    height: 55vh;
+    flex-grow: 2;
+    justify-content: flex-start;
+  }
+
+  #lists {
+    flex-shrink: 10;
+    height: 100%;
+  }
+
+  #logo {
+    width: 85%;
+    padding-right: 8%;
+    margin-bottom: 0.7rem;
+  }
+
+}
