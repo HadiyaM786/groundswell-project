@@ -1,8 +1,11 @@
+var is_map_reset;
 function backToAll() {
   clearPopup();
-  sortByDistance(lastLocation.geometry.coordinates, orgs);
+  selectedMark=null;
+  newMark=null;
   allViewToggles();
-  allListings(orgs)
+  allListings(orgs);
+  sortByDistance(lastLocation.geometry.coordinates, orgs);
 }
 
 function allViewToggles() {
@@ -43,16 +46,45 @@ document.getElementById("back-button").addEventListener("click", function() {
 
 document.getElementById("events-button").addEventListener("click", function() {
   orgs = false;
+  if(map.getSource('earthquakes')){
+    map.removeLayer('clusters');
+    map.removeLayer('cluster-count');
+    map.removeLayer('unclustered-point');
+    map.removeSource('earthquakes');
+  }
+  map.flyTo({center: config.MAP_CENTER, zoom:10});
+  if((!(areasOfWorkShowing.length>0) && !(helpNeededShowing.length>0)) && !keyword ){
+  eventsFromGoogleSheet();
+}
+
   document.getElementById("orgs-button").className = "toggle-unselected";
   document.getElementById("events-button").className = "toggle-selected";
-  render();
+  document.getElementById("events-list").style.display = "block";
+  document.getElementById("orgs-list").style.display = "none";
+  //document.getElementById("orgs-list").innerHTML='';
+  render(orgs);
+
 });
 
 document.getElementById("orgs-button").addEventListener("click", function() {
   orgs = true;
+
+  if(map.getSource('earthquakes')){
+    map.removeLayer('clusters');
+    map.removeLayer('cluster-count');
+    map.removeLayer('unclustered-point');
+    map.removeSource('earthquakes');
+  }
+  map.flyTo({center: config.MAP_CENTER, zoom:10});
+  if((!(areasOfWorkShowing.length>0) && !(helpNeededShowing.length>0)) && !keyword){
+  orgsFromGoogleSheet();
+}
   document.getElementById("orgs-button").className = "toggle-selected";
   document.getElementById("events-button").className = "toggle-unselected";
-  render();
+  document.getElementById("events-list").style.display = "none";
+  document.getElementById("orgs-list").style.display = "block";
+  //document.getElementById("events-list").innerHTML='';
+  render(orgs);
 });
 
 document.getElementById("more-button").addEventListener("click", function() {
@@ -244,14 +276,14 @@ function _keywordOnly(orgs) {
 function _showAll(orgs) {
   if (orgs) {
     document.querySelectorAll(".orgs-marker").forEach(marker => {
-      marker.style.display = "block";
+      marker.style.display = "none";
     });
     document.getElementById("orgs-list").childNodes.forEach(listing => {
       listing.style.display = "flex";
     });
   } else {
     document.querySelectorAll(".events-marker").forEach(marker => {
-      marker.style.display = "block";
+      marker.style.display = "none";
     });
     document.getElementById("events-list").childNodes.forEach(listing => {
       listing.style.display = "flex";
@@ -375,6 +407,13 @@ function _keywordAndFilters(orgs) {
 }
 
 function render() {
+  if(!(is_map_reset)){
+    map.removeLayer('clusters');
+    map.removeLayer('cluster-count');
+    map.removeLayer('unclustered-point');
+    map.removeSource('earthquakes');
+    is_map_reset=true;
+  }
   if (orgs) {
     document.querySelectorAll(".events-marker").forEach(marker => {
       marker.style.display = "none";
@@ -399,6 +438,15 @@ function render() {
     _keywordAndFilters(orgs);
   } else {
     _showAll(orgs);
+    is_map_reset=false;
+    if(orgs){
+     // document.getElementById("orgs-list").innerHTML='';
+      orgsFromGoogleSheet();
+    }else{
+     // document.getElementById("events-list").innerHTML='';
+      eventsFromGoogleSheet();
+    }
+
   }
 
   document.getElementById("searching").style.display = "none";
