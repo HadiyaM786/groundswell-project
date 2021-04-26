@@ -325,7 +325,7 @@ body {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
-  background-image: url("https://map.groundswellproject.org/images/marker.png");
+  background-image: url("./images/marker.png");
   z-index: 0;
 }
 
@@ -339,7 +339,7 @@ body {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
-  background-image: url("https://map.groundswellproject.org/images/marker.png");
+  background-image: url("./images/marker.png");
   z-index: 0;
 }
 
@@ -497,3 +497,4 @@ body {
   }
 
 }
+
