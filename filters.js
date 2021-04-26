@@ -53,6 +53,7 @@ function formatFilters() {
       button.className = "area-filter";
       button.addEventListener("click", function(e) {
         button.classList.toggle("work-filter-selected");
+     
         toggleAreasFilter(area);
       });
     }

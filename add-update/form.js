@@ -1,6 +1,6 @@
 const config = {
-  ORGS_URL: "https://docs.google.com/spreadsheets/d/1CqYHsnWnl46cD0tTqX30-ofDf5CK6tnfoxILz_-uy-E/gviz/tq?tqx=out:csv&sheet=Organisations",
-  EVENTS_URL: "https://docs.google.com/spreadsheets/d/1CqYHsnWnl46cD0tTqX30-ofDf5CK6tnfoxILz_-uy-E/gviz/tq?tqx=out:csv&sheet=Events",
+  ORGS_URL: "https://docs.google.com/spreadsheets/d/1MICdnJ5CnjIh2kYodN4vdFEN0r94Gbbdv7o4Xvkq1O4/gviz/tq?tqx=out:csv&sheet=Organisations",
+  EVENTS_URL: "https://docs.google.com/spreadsheets/d/1MICdnJ5CnjIh2kYodN4vdFEN0r94Gbbdv7o4Xvkq1O4/gviz/tq?tqx=out:csv&sheet=Events",
   LATITUDE_FIELD: "Latitude",
   LONGITUDE_FIELD: "Longitude",
   AREAS_OF_WORK: "Areas of Work",
